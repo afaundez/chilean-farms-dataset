@@ -1,3 +1,5 @@
 numpy
+medpy
 opencv-python
 scikit-image
+
