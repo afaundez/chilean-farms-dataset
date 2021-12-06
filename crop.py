@@ -86,7 +86,7 @@ for input_image_dir in glob.glob(input_image_dir_pattern):
             in_range = tuple(np.percentile(cropped_image, [2, 98]))
             enhanced_image = exposure.rescale_intensity(cropped_image, in_range=in_range, out_range=np.uint8)
             enhanced_image = smoothing.anisotropic_diffusion(enhanced_image) / 255.
-            # enhanced_image = adaptive_gamma(enhanced_image)
-            # enhanced_image = img_as_ubyte(enhanced_image)
+            enhanced_image = adaptive_gamma(enhanced_image)
+            enhanced_image = img_as_ubyte(enhanced_image)
             enhanced_image = cv2.medianBlur(enhanced_image, ksize=3)
             io.imsave(via_image_path, img_as_ubyte(enhanced_image))
